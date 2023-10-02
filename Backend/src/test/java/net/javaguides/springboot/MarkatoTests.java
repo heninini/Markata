@@ -1,10 +1,10 @@
-package com.futureB.backend;
+package net.javaguides.springboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendApplicationTests {
+class MarkatoTests {
 
 	@Test
 	void contextLoads() {
