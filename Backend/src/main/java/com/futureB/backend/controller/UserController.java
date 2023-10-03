@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.futureB.backend.Entity.User;
 import com.futureB.backend.repository.UserRepository;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 public class UserController {
 
