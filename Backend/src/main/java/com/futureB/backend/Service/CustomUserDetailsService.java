@@ -1,4 +1,4 @@
-package com.futureB.backend.security;
+package com.futureB.backend.Service;
 
 import com.futureB.backend.Entity.Role;
 import com.futureB.backend.Entity.User;

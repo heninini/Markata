@@ -31,6 +31,8 @@ public class User
     @Column(nullable=false)
     private String password;
 
+    private boolean isEnabled;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
             name="users_roles",
@@ -76,5 +78,13 @@ public class User
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }
