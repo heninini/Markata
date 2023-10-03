@@ -1,4 +1,4 @@
-package net.javaguides.springboot.model;
+package com.futureB.backend.Entity;
 
 import jakarta.persistence.*;
 

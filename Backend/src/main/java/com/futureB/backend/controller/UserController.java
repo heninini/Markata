@@ -1,16 +1,13 @@
-package net.javaguides.springboot.controller;
+package com.futureB.backend.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import net.javaguides.springboot.exception.ResourceNotFoundException;
-import net.javaguides.springboot.model.User;
-import net.javaguides.springboot.repository.UserRepository;
+import com.futureB.backend.Entity.User;
+import com.futureB.backend.repository.UserRepository;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
