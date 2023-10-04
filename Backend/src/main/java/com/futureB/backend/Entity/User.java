@@ -31,6 +31,8 @@ public class User {
 	@Column(name = "date")
 	private String date;
 
+	private boolean enabled = false;
+
 	public User() {
 	}
 
@@ -107,6 +109,14 @@ public class User {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override

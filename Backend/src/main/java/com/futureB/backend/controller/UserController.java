@@ -57,6 +57,15 @@ public class UserController {
 		return ResponseEntity.status(409).body("User Already Exist. FirstName:" + user.getFirstName());
 
 	}
+
+	@GetMapping("/users/activate-account")
+	public ResponseEntity<String> activateAccount(@RequestParam String token){
+		if(activationTokenService.verifedAndAccountActivated(token)){
+			return ResponseEntity.ok("Congrats you good to go!, you may try to login now");
+		}else {
+			return ResponseEntity.status(401).body("Opps! Something went wrong please try again");
+		}
+	}
 	
 	// get User by id rest api
 //	@GetMapping("/Users/{emailid}")

@@ -4,5 +4,5 @@ import com.futureB.backend.Entity.ActivationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ActivationTokenRepo extends JpaRepository<ActivationToken, Integer> {
-    ActivationToken findConfirmationTokenByConfirmationToken(String confirmationToken);
+    ActivationToken findActivationTokenByConfirmationToken(String confirmationToken);
 }
