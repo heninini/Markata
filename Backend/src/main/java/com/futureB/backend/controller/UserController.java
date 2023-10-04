@@ -2,7 +2,10 @@ package com.futureB.backend.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.futureB.backend.Entity.ActivationToken;
+import com.futureB.backend.Service.ActivationTokenService;
+import com.futureB.backend.Service.EmailService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,14 +14,14 @@ import com.futureB.backend.repository.UserRepository;
 
 @CrossOrigin(origins = "*")
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
+	private final PasswordEncoder passwordEncoder;
+	private final EmailService emailService;
+	private final ActivationTokenService activationTokenService;
 	// get all Users
 	@GetMapping("/Users")
 	public List<User> getAllUsers(){
@@ -44,7 +47,11 @@ public class UserController {
 		System.out.println(userRepository.findByEmailId(user.getEmailId()) + "\n");
 		if(userRepository.findByEmailId(user.getEmailId())==null){
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			userRepository.save(user);
+			User userInDB = userRepository.save(user);
+
+			ActivationToken activationToken = activationTokenService.createAndPersistActivationToken(userInDB);
+			emailService.sendActivationEmail(userInDB, activationToken);
+
 			return ResponseEntity.ok("Successful registration");
 		}
 		return ResponseEntity.status(409).body("User Already Exist. FirstName:" + user.getFirstName());
