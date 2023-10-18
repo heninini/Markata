@@ -21,13 +21,16 @@ public class ActivationTokenService {
         ActivationToken activationToken = this.tokenValid(token);
         if( activationToken != null  && !activationToken.getUser().isEnabled()){
             userService.activateUser(activationToken.getUser());
-            emailService.sendEmail(
-                    activationToken.getUser().getEmailId(),
-                    "futurebproject@gmail.com",
-                    "Vola! Your Markata Registrion is COMPLETED",
-                    "Congrats your all set up! Enjoy Marakta"
-            );
+            //Todo: this is taking to much time hence solve after understanding multhithreading this needs it's own thread
+//            emailService.sendEmail(
+//                    activationToken.getUser().getEmailId(),
+//                    "futurebproject@gmail.com",
+//                    "Vola! Your Markata Registrion is COMPLETED",
+//                    "Congrats your all set up! Enjoy Marakta"
+//            );
+            System.out.println("token " + !activationToken.getUser().isEnabled());
             return true;
+
         }else {
             return false;
         }

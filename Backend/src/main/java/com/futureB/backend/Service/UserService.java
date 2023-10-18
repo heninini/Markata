@@ -12,6 +12,7 @@ public class UserService {
     public User activateUser(User user) {
         User userInDB = userRepository.findByEmailId(user.getEmailId());
         userInDB.setEnabled(true);
+        //TODO delete the activation token entry after successful activation
         return userRepository.save(userInDB);
     }
 }

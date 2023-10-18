@@ -21,8 +21,11 @@ public class EmailService {
                 "futurebproject@gmail.com",
                 "Activate Your Markata Account",
                 "To confirm your account, please click here : "
-                        +"http://localhost:8080/users/activate-account?token=" + activationToken.getConfirmationToken()
+                        +"http://localhost:3000/users/activate-account?token=" + activationToken.getConfirmationToken()
+//                        +"http://localhost:8080/users/activate-account?token=" + activationToken.getConfirmationToken()
+
         );
+        System.out.println(activationToken.getConfirmationToken());
     }
 
     public void sendEmail(String toEmail, String fromEmail, String subject, String body) {

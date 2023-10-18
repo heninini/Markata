@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "ActivationToken")
 public class ActivationToken {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     private String confirmationToken;
